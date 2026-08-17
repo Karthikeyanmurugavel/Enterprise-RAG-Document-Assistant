@@ -1,0 +1,36 @@
+{
+  "name": "citations",
+  "description": "Does every citation in the answer point to a page that was actually retrieved? Measured by validate_citations(), which is exact string matching rather than a judgement call. A citation to a page the model never saw is a grounding failure even when the page happens to contain the fact.",
+  "questions": [
+    {
+      "question": "How much economic value could generative AI add annually?",
+      "expected_pages": [5, 11, 26],
+      "expected_keywords": ["2.6", "4.4", "trillion"]
+    },
+    {
+      "question": "Which industries see the biggest impact as a percentage of revenue?",
+      "expected_pages": [3, 5, 27, 28],
+      "expected_keywords": ["banking"]
+    },
+    {
+      "question": "How does generative AI improve customer operations?",
+      "expected_pages": [14, 16, 17],
+      "expected_keywords": ["customer"]
+    },
+    {
+      "question": "What is the impact of generative AI on software engineering?",
+      "expected_pages": [14, 22, 23],
+      "expected_keywords": ["software"]
+    },
+    {
+      "question": "How does generative AI affect marketing and sales?",
+      "expected_pages": [14, 18, 19, 20],
+      "expected_keywords": ["marketing"]
+    },
+    {
+      "question": "How does generative AI affect knowledge workers?",
+      "expected_pages": [33, 34, 35],
+      "expected_keywords": ["knowledge"]
+    }
+  ]
+}

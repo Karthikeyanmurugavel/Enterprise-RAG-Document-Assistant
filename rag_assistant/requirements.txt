@@ -1,0 +1,11 @@
+# Minimum versions are the ones this project was built and tested against.
+pymupdf>=1.28.0             # PDF text extraction (imported as "fitz")
+sentence-transformers>=5.6.1  # all-MiniLM-L6-v2 embeddings, 384-dim
+chromadb>=1.5.9             # persistent vector store
+ollama>=0.6.2               # client for the local LLM
+streamlit>=1.60.0           # web UI
+
+# Note: langchain was in the original plan but is not used. Retrieval and
+# generation are direct calls to chromadb and ollama, so adding an
+# orchestration layer would mean more abstraction for no extra capability.
+# It was removed rather than left as a dead dependency.

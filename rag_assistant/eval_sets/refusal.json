@@ -1,0 +1,30 @@
+{
+  "name": "refusal",
+  "description": "Out-of-domain questions the corpus cannot answer. The system must refuse rather than answer from the model's training data. Nearest-neighbour search always returns chunks, so the model is handed irrelevant context and has to decide to decline.",
+  "questions": [
+    {
+      "question": "What is the melting point of aluminum?",
+      "expected_pages": [],
+      "expected_keywords": [],
+      "must_refuse": true
+    },
+    {
+      "question": "Who won the 2022 FIFA World Cup?",
+      "expected_pages": [],
+      "expected_keywords": [],
+      "must_refuse": true
+    },
+    {
+      "question": "How do I bake sourdough bread at home?",
+      "expected_pages": [],
+      "expected_keywords": [],
+      "must_refuse": true
+    },
+    {
+      "question": "What is the capital city of Mongolia?",
+      "expected_pages": [],
+      "expected_keywords": [],
+      "must_refuse": true
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "hard",
+  "description": "Known-difficult cases, included deliberately so the numbers are not flattering. Covers the abbreviation gap (GenAI vs generative AI measured 0.950 vs 0.311 distance on the same target chunk), terse queries with few distinguishing terms, paraphrases sharing no vocabulary with the source, and the chart-fragment pages that once produced the meaningless answer '0.4 productivity gains'.",
+  "questions": [
+    {
+      "question": "How much value could GenAI add?",
+      "expected_pages": [5, 11, 26],
+      "expected_keywords": ["trillion"],
+      "note": "abbreviation - GenAI instead of generative AI"
+    },
+    {
+      "question": "What are the main productivity gains from generative AI?",
+      "expected_pages": [5, 11, 35],
+      "expected_keywords": ["productivity"],
+      "note": "previously produced garbled chart numbers"
+    },
+    {
+      "question": "gen ai value",
+      "expected_pages": [5, 11, 26],
+      "expected_keywords": ["trillion"],
+      "note": "terse keyword-style query, no sentence structure"
+    },
+    {
+      "question": "What is the total addressable impact on the world economy?",
+      "expected_pages": [5, 11, 26],
+      "expected_keywords": ["trillion"],
+      "note": "paraphrase sharing little vocabulary with the source text"
+    },
+    {
+      "question": "Which jobs are most exposed to being automated?",
+      "expected_pages": [34, 35, 36, 38],
+      "expected_keywords": ["automation"],
+      "note": "asks about jobs where the report discusses activities"
+    }
+  ]
+}

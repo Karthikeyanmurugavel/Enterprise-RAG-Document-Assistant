@@ -1,0 +1,25 @@
+# Virtual environment - rebuilt from requirements.txt
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Vector store - contains the full text of indexed documents, so committing
+# it would publish every PDF that has ever been ingested.
+chroma_db/
+
+# Uploaded PDFs stay private. The folder itself is tracked so the app has
+# somewhere to write on a fresh clone.
+documents/*
+!documents/.gitkeep
+
+# Streamlit secrets - API keys must never be committed
+.streamlit/secrets.toml
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
