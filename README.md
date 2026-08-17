@@ -58,17 +58,24 @@ run and tested alone.
 Requires Python 3.13 and [Ollama](https://ollama.com).
 
 ```bash
+git clone https://github.com/Karthikeyanmurugavel/Enterprise-RAG-Document-Assistant.git
+cd Enterprise-RAG-Document-Assistant
+
 python -m venv .venv
-.venv\Scripts\activate          # Windows
-pip install -r requirements.txt
+.venv\Scripts\activate                        # Windows
+# source .venv/bin/activate                   # macOS / Linux
+
+pip install -r rag_assistant/requirements.txt
 ollama pull llama3.2:3b
 ```
 
 ## Usage
 
-Everything runs through one CLI:
+All commands run from the `rag_assistant/` directory:
 
 ```bash
+cd rag_assistant
+
 python cli.py status                      # is the index and Ollama ready?
 python cli.py ingest                      # load and embed PDFs from documents/
 python cli.py retrieve <question>         # show matching chunks, no LLM
@@ -81,6 +88,8 @@ Or the web UI, which supports drag-and-drop upload:
 streamlit run app.py
 ```
 
+Ollama must be running — the app talks to it at `localhost:11434`.
+
 Questions do not need quoting — everything after the subcommand is the question.
 
 ---
@@ -91,6 +100,7 @@ The part most RAG projects skip. Four question sets with ground truth verified
 against the source document, split by failure mode.
 
 ```bash
+cd rag_assistant
 python evaluate.py --all                    # retrieval only, ~26 seconds
 python evaluate.py --set citations --full   # includes the LLM, ~4.5 minutes
 ```
@@ -173,6 +183,17 @@ trustworthy at all.
   chunk that `"generative AI"` scores 0.311 on. The abbreviation is not strongly
   associated by the embedding model.
 
+## Tests
+
+```bash
+cd rag_assistant
+python -m pytest test_rag.py -v
+```
+
+14 tests covering chunking, citation validation, refusal handling and per-user
+isolation. No LLM calls, so the suite runs in about 20 seconds — evaluation and
+regression testing are separate jobs.
+
 ## Project structure
 
 ```
@@ -184,6 +205,7 @@ rag_assistant/
 ├── cli.py           unified entry point
 ├── app.py           Streamlit UI
 ├── evaluate.py      evaluation harness
+├── test_rag.py      test suite
 ├── eval_sets/       ground-truth question sets
 └── documents/       PDFs to index
 ```
