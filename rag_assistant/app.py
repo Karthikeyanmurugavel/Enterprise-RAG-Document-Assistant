@@ -82,8 +82,12 @@ def user_sources() -> set[str]:
 with st.sidebar:
     st.header("Status")
 
-    vector_count = collection.count()
-    st.markdown(f"{'🟢' if vector_count else '🔴'} **{vector_count}** vectors indexed")
+    # Scoped to this session, not collection.count(). A global count would tell
+    # a visitor how much everyone else has uploaded, and reads as a
+    # contradiction next to an empty document list.
+    session_rows = collection.get(where={"user_id": user_id}, include=[])
+    vector_count = len(session_rows["ids"])
+    st.markdown(f"{'🟢' if vector_count else '⚪'} **{vector_count}** vectors in this session")
 
     if models is None:
         st.markdown("🔴 Ollama unreachable")
